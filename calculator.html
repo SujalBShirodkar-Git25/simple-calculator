@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator</title>
+    <style>
+      body{
+        background-color: black;
+        font-family: Arial;
+      }
+
+      p{
+        color: white;
+        font-size: 25px;
+      }
+
+      button{
+        background-color: rgb(51,51,51);
+        color: white;
+        border: none;
+        height: 50px;
+        width: 50px;
+        border-radius: 25px;
+        font-size: 16px;
+      }
+
+      .sign-buttons{
+        background-color: orange;
+      }
+
+      .display{
+        margin-left: 7px;
+      }
+    </style>
+  </head>
+  <body>
+    <p class="display"></p>
+    <p>
+      <button onclick="
+        updateCalculation('1');
+        ">1</button>
+
+      <button onclick="
+        updateCalculation('2');
+        ">2</button>
+
+      <button onclick="
+        updateCalculation('3');
+        "> 3</button>
+
+      <button onclick="
+        updateCalculation(' + ');
+        " class="sign-buttons">+</button>
+    </p>
+
+    <p>
+      <button onclick="
+        updateCalculation('4');
+        ">4</button>
+
+      <button onclick="
+        updateCalculation('5');
+        ">5</button>
+
+      <button onclick="
+        updateCalculation('6');
+        ">6</button>
+
+      <button onclick="
+        updateCalculation(' - ');
+        " class="sign-buttons">-</button>
+    </p>
+
+    <p>
+      <button onclick="
+        updateCalculation('7');
+        ">7</button>
+
+      <button onclick="
+        updateCalculation('8');
+        ">8</button>
+
+      <button onclick="
+        updateCalculation('9');
+        ">9</button>
+
+      <button onclick="
+        updateCalculation(' * ');
+        " class="sign-buttons">*</button>
+    </p>
+
+    <p>
+      <button onclick="
+        updateCalculation('0');
+        ">0</button>
+
+      <button onclick="
+        updateCalculation('.');
+        ">.</button>
+
+      <button onclick="
+      calculation = eval(calculation);
+      document.querySelector('.display').innerHTML = calculation;
+      localStorage.setItem('calculation',calculation);
+      ">=</button>
+      
+      <button onclick="
+        updateCalculation(' / ');
+        " class="sign-buttons">/</button>
+    </p>
+
+    <button onclick="
+        calculation = 'Calculator';
+        document.querySelector('.display').innerHTML = calculation;
+        localStorage.setItem('calculation',calculation);
+        ">Clear</button>
+
+    <script>
+      let calculation = localStorage.getItem('calculation') || 'Calculator';
+      document.querySelector('.display').innerHTML = calculation;
+
+      function updateCalculation(value){
+        if(calculation == 'Calculator') calculation = '';
+        calculation += value;
+        document.querySelector('.display').innerHTML = calculation;
+        localStorage.setItem('calculation',calculation);
+      }
+    </script>
+  </body>
+</html>
